@@ -23,6 +23,7 @@ Keep repeating this until you are left with only 1 ID. At the end you will have 
 
 
 **AStar Pathfinding**
+
 The AStar Pathfinding is a well known pathfinding algorithm. Here, we are not going to pathfind using diagonals i.e we can only walk either up/down/left/right. Create 2 lists/arrays for storing the nodes, open set (prospective nodes to search on) and closed set(nodes already searched on).
 
 Step 1: We take the start point, and add it to the open set.
