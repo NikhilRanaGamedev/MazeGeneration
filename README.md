@@ -28,7 +28,7 @@ The AStar Pathfinding is a well known pathfinding algorithm. Here, we are not go
 
 Step 1: We take the start point, and add it to the open set.<br>
 Step 2: Pick the node with the lowest fCost in the open set, and lets call it the current node.<br>
-Step 3: Add the current node to the closed set.<br>
+Step 3: Add the current node to the closed set and remove it from the open set.<br>
 Step 4: Check the adjacent neighbours to the current node.<br>
 
 ![Adjacent Cells](https://user-images.githubusercontent.com/38834548/171789306-c29753d3-9d86-4f65-b3f6-3e1aa9790c2f.png)
