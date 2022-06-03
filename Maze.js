@@ -10,8 +10,8 @@ let ids = new Set(); // Ids for each cell
 let latestDirection = Direction.Down; // Direction of the adjacent node relative to the random node.
 let updateNodesIdSet = new Set(); // For storing the nodes during ID update.
 
-let screenSizeX = 1890; // Width of the screen
-let screenSizeY = 950; // Height of the screen
+let screenSizeX = 650; // Width of the screen
+let screenSizeY = 50; // Height of the screen
 let XSize = 0; // Width of the maze
 let YSize = 0; // Height of the maze
 let XOffset = 50; // Offset of the width of the maze
@@ -21,32 +21,11 @@ let CellSize = 0; // Size of the cell
 // Setup the canvas
 function setup()
 {
-    // Get the size of the maze.
-    let inputXSize = createInput(10, int);
-    inputXSize.size(100, 25);
-    inputXSize.position(0, 0);
+    createCanvas(screenSizeX, screenSizeY); // Draw canvas
+    background(180); // Color the canvas
 
-    let inputYSize = createInput(10, int);
-    inputYSize.size(100, 25);
-    inputYSize.position(150, 0);
-
-    let inputCellSize = createInput(50, int);
-    inputCellSize.size(100, 25);
-    inputCellSize.position(300, 0);
-
-    // Generate the maze on button click.
-    let button = createButton('Generate Maze');
-    button.size(100, 35);
-    button.position(450, 0);
-    button.mousePressed(function()
-    {
-        XSize = Number(inputXSize.value());
-        YSize = Number(inputYSize.value());
-        CellSize = Number(inputCellSize.value());
-        
-        clear();
-        Init();
-    });
+    DrawInputsText();;
+    DrawInputBoxes();
 }
 
 function Init()
@@ -57,8 +36,48 @@ function Init()
     createCanvas(screenSizeX, screenSizeY); // Draw canvas
     background(180); // Color the canvas
 
+    DrawInputsText();
+
     GenerateGrid(XSize, YSize); // Generate the grid
     DrawMaze(XSize, YSize, XOffset, YOffset, CellSize); // Draw the maze
+}
+
+// Draws the text for the input boxes.
+function DrawInputsText()
+{
+    text('X:', 10, 20);
+    text('Y:', 175, 20);
+    text('Cell Size:', 350, 20);
+}
+
+// Draws the input boxes.
+function DrawInputBoxes()
+{
+    let inputXSize = createInput(10, int);
+    inputXSize.size(100, 25);
+    inputXSize.position(35, 8);
+
+    let inputYSize = createInput(10, int);
+    inputYSize.size(100, 25);
+    inputYSize.position(200, 8);
+
+    let inputCellSize = createInput(50, int);
+    inputCellSize.size(100, 25);
+    inputCellSize.position(415, 8);   
+
+    // Generate the maze on button click.
+    let button = createButton('Generate Maze');
+    button.size(100, 32);
+    button.position(550, 8);
+    button.mousePressed(function()
+    {
+        XSize = Number(inputXSize.value());
+        YSize = Number(inputYSize.value());
+        CellSize = Number(inputCellSize.value());
+        
+        clear();
+        Init();
+    }); 
 }
 
 // Generate the grid of cells [X, Y]
@@ -375,6 +394,10 @@ function CheckForNodeType(node, path, closedSetNodes, openSetNodes, xPos, yPos, 
         stroke("yellow");
         strokeWeight(1);
         square(xPos + (cellSize / 2) / 2, yPos + (cellSize / 2) / 2, cellSize / 2);
+
+        // Shows the fCost of the cell.
+        // stroke("black");
+        // text(node.fCost, xPos + cellSize / 2.5, yPos + cellSize / 4);
     }            
     else if (openSetNodes.includes(node)) // If node was a prospective node.
     {

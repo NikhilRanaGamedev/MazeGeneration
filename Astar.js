@@ -51,7 +51,7 @@ class Astar
                 {
                     continue;
                 }
-
+                
                 // Calculate the gCost for the current node.
                 let gCost = currentNode.gCost + 1;
                 
