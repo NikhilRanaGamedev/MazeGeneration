@@ -24,7 +24,7 @@ function setup()
     createCanvas(screenSizeX, screenSizeY); // Draw canvas
     background(180); // Color the canvas
 
-    DrawInputsText();;
+    DrawInputsText();
     DrawInputBoxes();
 }
 
