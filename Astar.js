@@ -41,7 +41,7 @@ class Astar
             }
 
             // Get the neighbours of the current node.
-            let neigbours = this.GetNeighbours(currentNode);
+            let neigbours = [currentNode.upNode, currentNode.downNode, currentNode.leftNode, currentNode.rightNode];
 
             // Loop through the neighbours.
             for (let i = 0; i < neigbours.length; i++)
@@ -100,36 +100,6 @@ class Astar
         }
 
         return bestNode;
-    }
-
-    // Gets the adjacent neighbours of a node.
-    GetNeighbours(node)
-    {
-        let neigbours = [];
-        
-        if (!node.walls.has(Direction.Up))
-            neigbours.push(this.GetNodeFromPosition(node.cellPosition, 0, -1)); // Top neighbour
-        
-        if (!node.walls.has(Direction.Down))
-            neigbours.push(this.GetNodeFromPosition(node.cellPosition, 0, 1)); // Bottom neighbour
-            
-        if (!node.walls.has(Direction.Left))
-            neigbours.push(this.GetNodeFromPosition(node.cellPosition, -1, 0)); // Left neighbour
-        
-        if (!node.walls.has(Direction.Right))
-            neigbours.push(this.GetNodeFromPosition(node.cellPosition, 1, 0)); // Right neighbour
-
-        return neigbours;
-    }
-
-    // Gets a node from a cell position.
-    GetNodeFromPosition(position, x, y)
-    {
-        // Check if the cell position is valid i.e. within the grid or out of bounds.
-        if (position.x + x >= 0 && position.x + x < this.cells[0].length && position.y + y >= 0 && position.y + y < this.cells.length)
-        {
-            return this.cells[position.y + y][position.x + x];
-        }
     }
 
     // Calculate the distance between a node and the end node using the Manhattan Distance.
