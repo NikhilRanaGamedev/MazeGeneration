@@ -1,3 +1,6 @@
+# Note
+This is just a Proof of Concept and a fun project. The code is not optimized.
+
 # MazeGeneration
 This maze generation algorithm uses Randomized Kruskal's algorithm to generate a maze, then picks a random start and end point, and finally uses A* Pathfinding to find the path. Let's break it down.
 
